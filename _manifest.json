@@ -4,6 +4,90 @@
   "version": "0.1.0",
   "description": "MaiBot 的 ComfyUI 绘图插件，支持命令绘图、LLM 主动调用、多工作流切换与风控。",
   "author": {
-    "name": "知更鸟"
-  }
+    "name": "晴空",
+    "url": "https://github.com/XXXxx7258"
+  },
+  "license": "MIT",
+  "host_application": {
+    "min_version": "0.10.0"
+  },
+  "homepage_url": "https://github.com/XXXxx7258/maibot_comfyui_plugin",
+  "repository_url": "https://github.com/XXXxx7258/maibot_comfyui_plugin",
+  "keywords": [
+    "comfyui",
+    "maibot",
+    "image",
+    "draw",
+    "workflow",
+    "绘图",
+    "图像生成",
+    "多工作流"
+  ],
+  "categories": [
+    "Image",
+    "AI",
+    "Utilities"
+  ],
+  "default_locale": "zh-CN",
+  "locales_path": "_locales",
+  "plugin_info": {
+    "is_built_in": false,
+    "plugin_type": "comfyui",
+    "components": [
+      {
+        "type": "command",
+        "name": "comfy_draw",
+        "description": "使用当前工作流生成图片"
+      },
+      {
+        "type": "command",
+        "name": "comfy_draw_direct",
+        "description": "直接发送 ComfyUI 生成图片"
+      },
+      {
+        "type": "command",
+        "name": "comfy_help",
+        "description": "显示 ComfyUI 插件帮助"
+      },
+      {
+        "type": "command",
+        "name": "comfy_list",
+        "description": "列出所有工作流"
+      },
+      {
+        "type": "command",
+        "name": "comfy_use",
+        "description": "切换当前工作流"
+      },
+      {
+        "type": "command",
+        "name": "comfy_save",
+        "description": "保存新的工作流 JSON"
+      },
+      {
+        "type": "command",
+        "name": "comfy_add",
+        "description": "管理当前工作流的步数覆盖"
+      },
+      {
+        "type": "command",
+        "name": "comfy_policy",
+        "description": "设置当前群聊的违禁级别"
+      },
+      {
+        "type": "action",
+        "name": "comfyui_draw",
+        "description": "在普通对话中，当生成图片比纯文本更合适时主动绘图"
+      }
+    ],
+    "features": [
+      "命令绘图",
+      "LLM 主动调用绘图 Action",
+      "多工作流切换",
+      "步数覆盖 sidecar 管理",
+      "群白名单 / 冷却 / 敏感词控制",
+      "支持 ComfyUI API 工作流执行"
+    ]
+  },
+  "id": "晴空.maibot_comfyui_plugin"
 }
