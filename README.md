@@ -315,3 +315,11 @@ maibot_comfyui_plugin/
 ├─ workflow/
 └─ _locales/
 ```
+
+---
+
+## 鸣谢
+
+本插件在设计与功能规划上借鉴了：
+
+- https://github.com/lumingya/astrbot_plugin_comfyui_pro
