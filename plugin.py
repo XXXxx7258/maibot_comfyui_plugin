@@ -49,6 +49,7 @@ class MaiBotComfyUIPlugin(BasePlugin):
             "cooldown_seconds": ConfigField(type=int, default=35, description="冷却时间（秒）"),
             "admin_ids": ConfigField(type=list, default=[], description="管理员 ID 列表"),
             "whitelist_group_ids": ConfigField(type=list, default=[], description="群白名单"),
+            "group_policies": ConfigField(type=dict, default={}, description="按群配置的违禁级别"),
             "default_group_policy": ConfigField(type=str, default="lite", description="群默认敏感词策略"),
             "default_private_policy": ConfigField(type=str, default="lite", description="私聊默认敏感词策略"),
             "lockdown": ConfigField(type=bool, default=False, description="是否全局锁定"),
@@ -63,4 +64,26 @@ class MaiBotComfyUIPlugin(BasePlugin):
     }
 
     def get_plugin_components(self) -> List[Tuple[ComponentInfo, Type]]:
-        return []
+        from .actions import ComfyUIDrawAction
+        from .commands import (
+            ComfyAddCommand,
+            ComfyHelpCommand,
+            ComfyListCommand,
+            ComfyPolicyCommand,
+            ComfySaveCommand,
+            ComfyUseCommand,
+            DrawCommand,
+            DrawDirectCommand,
+        )
+
+        return [
+            (DrawCommand.get_command_info(), DrawCommand),
+            (DrawDirectCommand.get_command_info(), DrawDirectCommand),
+            (ComfyHelpCommand.get_command_info(), ComfyHelpCommand),
+            (ComfyListCommand.get_command_info(), ComfyListCommand),
+            (ComfyUseCommand.get_command_info(), ComfyUseCommand),
+            (ComfySaveCommand.get_command_info(), ComfySaveCommand),
+            (ComfyAddCommand.get_command_info(), ComfyAddCommand),
+            (ComfyPolicyCommand.get_command_info(), ComfyPolicyCommand),
+            (ComfyUIDrawAction.get_action_info(), ComfyUIDrawAction),
+        ]

@@ -22,6 +22,12 @@ class WorkflowManager:
     def get_sidecar_path(self, workflow_name: str) -> Path:
         return self.workflow_dir / f"{Path(workflow_name).stem}.steps.json"
 
+    def save_workflow(self, workflow_name: str, data: dict) -> Path:
+        workflow_path = self.get_workflow_path(workflow_name)
+        with open(workflow_path, "w", encoding="utf-8") as file:
+            json.dump(data, file, ensure_ascii=False, indent=2)
+        return workflow_path
+
     def read_step_overrides(self, workflow_name: str) -> dict:
         sidecar_path = self.get_sidecar_path(workflow_name)
         if not sidecar_path.exists():
